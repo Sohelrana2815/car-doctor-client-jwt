@@ -1,12 +1,12 @@
 import Banner from "../Shared/Banner/Banner";
-import img from "../../assets/images/checkout/checkout.png";
+import img1 from "../../assets/images/checkout/checkout.png";
 import { useLoaderData } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 const Checkout = () => {
   const service = useLoaderData();
   console.log(service);
-  const { title, _id, price } = service;
+  const { title, _id, price, img } = service;
   const { user } = useContext(AuthContext);
   //   console.log(user);
 
@@ -20,14 +20,31 @@ const Checkout = () => {
       customerName: name,
       email,
       date,
-      service: _id,
+      img,
+      service: title,
+      service_id: _id,
       price: price,
     };
     console.log(booking);
+
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          alert("service booked successfully!");
+        }
+      });
   };
   return (
     <div>
-      <Banner text="Check Out" img={img}></Banner>
+      <Banner text="Check Out" img={img1}></Banner>
       <h3 className="text-center">Service : {title}</h3>
       <form onSubmit={handleBookingService}>
         <div className=" grid grid-cols-1 md:grid-cols-2 gap-6">
