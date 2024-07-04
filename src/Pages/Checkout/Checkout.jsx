@@ -44,8 +44,8 @@ const Checkout = () => {
   };
   return (
     <div>
+      <h3 className="text-center text-2xl font-bold mb-6">Service : {title}</h3>
       <Banner text="Check Out" img={img1}></Banner>
-      <h3 className="text-center">Service : {title}</h3>
       <form onSubmit={handleBookingService}>
         <div className=" grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="form-control">

@@ -78,6 +78,11 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <a className="btn btn-outline btn-warning ">Appointment</a>
+        <span className="relative">
+          <span className="absolute left-20 -top-4 text-lg font-semibold text-success">
+            {user && user?.email}
+          </span>
+        </span>
       </div>
     </div>
   );
