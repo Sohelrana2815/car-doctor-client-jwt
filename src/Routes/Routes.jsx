@@ -34,7 +34,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://car-doctor-jwt-server-swart.vercel.app/services/${params.id}`),
+          fetch(
+            `https://car-doctor-jwt-server-swart.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/bookings",
