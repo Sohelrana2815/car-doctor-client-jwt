@@ -13,19 +13,21 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    const loggedInUser = { email, password };
-    console.log(loggedInUser);
+    // const loggedInUser = { email, password };
+    // console.log(loggedInUser);
     signIn(email, password)
-      .then((result) => {
-        const loggedInUser = result.user;
-        console.log(loggedInUser);
+      .then(() => {
+        // const loggedInUser = result.user;
+        // console.log(loggedInUser);
         const user = { email };
 
         // get access token
         axios
-          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .post("https://car-doctor-jwt-server-swart.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.success) {
               navigate(location?.state ? location?.state : "/");
             }

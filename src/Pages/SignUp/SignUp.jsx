@@ -8,16 +8,16 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    // const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const registerUser = { name, email, password };
-    console.log(registerUser);
+    // const registerUser = { name, email, password };
+    // console.log(registerUser);
 
     createUser(email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
+      .then(() => {
+        // const user = result.user;
+        // console.log(user);
       })
       .catch((error) => {
         console.log(error);

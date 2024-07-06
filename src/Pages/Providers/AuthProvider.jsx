@@ -33,25 +33,33 @@ const AuthProvider = ({ children }) => {
       const userEmail = currentUser?.email || user?.email;
       const loggedUser = { email: userEmail };
       setUser(currentUser);
-      console.log("Current User", currentUser);
+      // console.log("Current User", currentUser);
       setLoading(false);
       //
 
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedUser, {
-            withCredentials: true,
-          })
-          .then((res) => {
-            console.log("data", res.data);
+          .post(
+            "https://car-doctor-jwt-server-swart.vercel.app/jwt",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
+          .then(() => {
+            // console.log("data", res.data);
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", loggedUser, {
-            withCredentials: true,
-          })
-          .then((res) => {
-            console.log(res.data);
+          .post(
+            "https://car-doctor-jwt-server-swart.vercel.app/logout",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
+          .then(() => {
+            // console.log(res.data);
           });
       }
     });

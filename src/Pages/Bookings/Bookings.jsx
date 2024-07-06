@@ -9,7 +9,7 @@ const Bookings = () => {
 
   const [bookings, setBookings] = useState([]);
 
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  const url = `https://car-doctor-jwt-server-swart.vercel.app/bookings?email=${user?.email}`;
 
   useEffect(() => {
     axios.get(url, { withCredentials: true }).then((res) => {
@@ -24,12 +24,12 @@ const Bookings = () => {
     console.log(id);
     const proceed = confirm("Are you sure you want to delete this booking?");
     if (proceed) {
-      fetch(`http://localhost:5000/bookings/${id}`, {
+      fetch(`https://car-doctor-jwt-server-swart.vercel.app/bookings/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           if (data.deletedCount > 0) {
             alert("Deleted successfully!");
             const remaining = bookings.filter((booking) => booking._id !== id);
@@ -42,14 +42,14 @@ const Bookings = () => {
     const proceed = confirm("Do you want to confirm the order?");
 
     if (proceed) {
-      fetch(`http://localhost:5000/bookings/${id}`, {
+      fetch(`https://car-doctor-jwt-server-swart.vercel.app/bookings/${id}`, {
         method: "PATCH",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ status: "confirm" }),
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           if (data.modifiedCount > 0) {
             alert("Order confirm successfully!");
 
